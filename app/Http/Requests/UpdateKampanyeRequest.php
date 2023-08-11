@@ -21,10 +21,6 @@ class UpdateKampanyeRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'slug' => [
-                'string',
-                'required',
-            ],
             'total' => [
                 'required',
             ],

@@ -21,16 +21,8 @@ class StoreKampanyeRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'slug' => [
-                'string',
-                'required',
-            ],
             'total' => [
                 'required',
-            ],
-            'image' => [
-                'image|mimes:png,jpg,jpeg',
-                'nullable',
             ],
             'lokasi' => [
                 'string',

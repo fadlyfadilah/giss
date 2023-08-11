@@ -29,9 +29,6 @@
                             {{ trans('cruds.kampanye.fields.nama_kampanye') }}
                         </th>
                         <th>
-                            {{ trans('cruds.kampanye.fields.slug') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.kampanye.fields.total') }}
                         </th>
                         <th>
@@ -61,13 +58,10 @@
                                 {{ $kampanye->nama_kampanye ?? '' }}
                             </td>
                             <td>
-                                {{ $kampanye->slug ?? '' }}
+                                Rp. {{ number_format($kampanye->total, 2, ',', '.') ?? '' }}
                             </td>
                             <td>
-                                {{ $kampanye->total ?? '' }}
-                            </td>
-                            <td>
-                                {{ $kampanye->image ?? '' }}
+                                <img src="{{ $kampanye->getImage() ?? '' }}" alt="image" width="128px">
                             </td>
                             <td>
                                 {{ $kampanye->deskripsi ?? '' }}
