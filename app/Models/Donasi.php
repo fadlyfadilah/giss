@@ -6,11 +6,11 @@ use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Donatur extends Model
+class Donasi extends Model
 {
     use HasFactory;
 
-    public $table = 'donaturs';
+    public $table = 'donasis';
 
     protected $dates = [
         'created_at',
@@ -20,11 +20,11 @@ class Donatur extends Model
 
     protected $fillable = [
         'user_id',
-        'nama',
+        'order_id',
+        'full_name',
         'email',
-        'nohp',
         'jumlah',
-        'pesan',
+        'note',
         'kampanye_id',
         'created_at',
         'updated_at',

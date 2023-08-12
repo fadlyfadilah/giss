@@ -141,7 +141,7 @@
         // titik koordinat disini kita dapatkan dari tabel centrepoint tepatnya dari field location
         // yang sebelumnya sudah kita tambahkan jadi lokasi map yang akan muncul  sesuai dengan tabel
         // centrepoint
-        center: [{{ $centrepoint->location }}],
+        center: [{{ $centrepoint->location ?? '-6.952763517964968,107.60024179162276' }}],
         zoom: 14,
         layers: [streets]
     });
@@ -163,7 +163,7 @@
     // lalu kita masukkan curLocation tersebut ke dalam variabel marker untuk menampilkan marker
     // pada peta.
 
-    var curLocation = [{{ $centrepoint->location }}];
+    var curLocation = [{{ $centrepoint->location ?? '-6.952763517964968,107.60024179162276' }}];
     map.attributionControl.setPrefix(false);
 
     var marker = new L.marker(curLocation, {

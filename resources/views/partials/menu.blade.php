@@ -95,14 +95,14 @@
                         </a>
                     </li>
                 @endcan
-                @can('donatur_access')
+                @can('donasi_access')
                     <li class="nav-item">
-                        <a href="{{ route("admin.donaturs.index") }}" class="nav-link {{ request()->is("admin/donaturs") || request()->is("admin/donaturs/*") ? "active" : "" }}">
+                        <a href="{{ route("admin.donasis.index") }}" class="nav-link {{ request()->is("admin/donasis") || request()->is("admin/donasis/*") ? "active" : "" }}">
                             <i class="fa-fw nav-icon fas fa-hand-holding-heart">
 
                             </i>
                             <p>
-                                {{ trans('cruds.donatur.title') }}
+                                {{ trans('cruds.donasi.title') }}
                             </p>
                         </a>
                     </li>

@@ -34,6 +34,12 @@ class Kampanye extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+    
+    public function donasis()
+    {
+        return $this->hasMany(Donasi::class);
+    }
+
     public function getImage()
     {
         if (substr($this->image, 0, 5) == "https") {

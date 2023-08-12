@@ -116,26 +116,10 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 27,
-                'title' => 'donatur_create',
+                'title' => 'donasi_access',
             ],
             [
                 'id'    => 28,
-                'title' => 'donatur_edit',
-            ],
-            [
-                'id'    => 29,
-                'title' => 'donatur_show',
-            ],
-            [
-                'id'    => 30,
-                'title' => 'donatur_delete',
-            ],
-            [
-                'id'    => 31,
-                'title' => 'donatur_access',
-            ],
-            [
-                'id'    => 32,
                 'title' => 'profile_password_edit',
             ],
         ];

@@ -2,20 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kampanye;
+use App\Models\Koordinat;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -23,6 +15,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $koordinat = Koordinat::first();
+        $kampanyes = Kampanye::with('donasis')->take(3)->get();
+
+        return view('welcome', compact('kampanyes', 'koordinat'));
+    }
+    
+    public function show(Kampanye $kampanye) 
+    {
+        return view('show', compact('kampanye'));
+    }
+    
+    public function kampanye() 
+    {
+        $kampanyes = Kampanye::all();
+
+        return view('kampanye', compact('kampanyes'));
     }
 }

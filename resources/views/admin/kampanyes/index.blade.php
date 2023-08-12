@@ -64,7 +64,7 @@
                                 <img src="{{ $kampanye->getImage() ?? '' }}" alt="image" width="128px">
                             </td>
                             <td>
-                                {{ $kampanye->deskripsi ?? '' }}
+                                {{ Str::limit($kampanye->deskripsi, 100, '...') ?? '' }}
                             </td>
                             <td>
                                 {{ $kampanye->lokasi ?? '' }}

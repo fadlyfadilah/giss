@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Donatur;
+use App\Models\Donasi;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassDestroyDonaturRequest extends FormRequest
+class MassDestroyDonasiRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('donatur_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('donasi_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
@@ -20,7 +20,7 @@ class MassDestroyDonaturRequest extends FormRequest
     {
         return [
             'ids'   => 'required|array',
-            'ids.*' => 'exists:donaturs,id',
+            'ids.*' => 'exists:donasis,id',
         ];
     }
 }
