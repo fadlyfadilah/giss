@@ -61,6 +61,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('frontend.donasi.index') }}">Donasi Saya</a>
                         </li>
+                        <li class="ml-2 nav-item white">
+                            <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">Logout</a>
+                        </li>
                     @else
                         <li class="ml-2 nav-item white">
                             <a class="nav-link" href="{{ route('login') }}">Login</a>
@@ -109,6 +112,9 @@
         </div>
     </div>
 
+    <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+    </form>
     <footer>
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
@@ -227,8 +233,8 @@
                 L.marker([{{ $item->lokasi }}])
                     .bindPopup(
                         "<div class='my-2'><img src='{{ $item->getImage() }}' class='img-fluid' width='700px'></div>" +
-                        "<div class='my-2'><strong>Nama Spot:</strong> <br>{{ $item->nama_kampanye }}</div>" +
-                        "<a href='{{ route('kampanye.show', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Spot</a></div>" +
+                        "<div class='my-2'><strong>Nama Kampanye:</strong> <br>{{ $item->nama_kampanye }}</div>" +
+                        "<a href='{{ route('kampanye.show', $item->slug) }}' class='btn btn-outline-info btn-sm'>Detail Kampanye</a></div>" +
                         "<div class='my-2'></div>"
                     ).addTo(map);
             @endforeach

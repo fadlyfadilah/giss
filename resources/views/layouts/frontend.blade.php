@@ -54,6 +54,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('frontend.donasi.index') }}">Donasi Saya</a>
                             </li>
+                            <li class="ml-2 nav-item white">
+                                <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">Logout</a>
+                            </li>
                         @else
                             <li class="ml-2 nav-item white">
                                 <a class="nav-link" href="{{ route('login') }}">Login</a>
@@ -95,6 +98,9 @@
             @yield('content')
         </main>
     </div>
+    <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+    </form>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
