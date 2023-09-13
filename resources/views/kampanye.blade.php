@@ -31,7 +31,7 @@
             max-height: 100%;
         }
     </style>
-    <title>Web Donasi GIS</title>
+    <title>Babakan Peutey Fondantion</title>
 </head>
 
 <body>
@@ -57,7 +57,8 @@
                             <a class="nav-link" href="{{ route('frontend.donasi.index') }}">Donasi Saya</a>
                         </li>
                         <li class="ml-2 nav-item white">
-                            <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">Logout</a>
+                            <a href="#" class="nav-link"
+                                onclick="event.preventDefault(); document.getElementById('logoutform').submit();">Logout</a>
                         </li>
                     @else
                         <li class="ml-2 nav-item white">
@@ -71,20 +72,26 @@
             </div>
         </div>
     </nav>
-    
-    
+
+
     <div class="container mb-5">
         <h3 class="display-6">Daftar Kampanye</h3>
-        @foreach ($kampanyes as $kampanye)
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ $kampanye->getImage() }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $kampanye->nama_kampanye }}</h5>
-                    <p class="card-text">{{ Str::limit($kampanye->deskripsi, 100, '...') }}</p>
-                    <a href="{{ route('kampanye.show', $kampanye->slug) }}" class="btn btn-primary">Lebih Lanjut</a>
+        <div class="row">
+            @foreach ($kampanyes as $kampanye)
+                <div class="col-md-3 ml-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{ $kampanye->getImage() }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $kampanye->nama_kampanye }}</h5>
+                            <p class="card-text">{{ Str::limit($kampanye->deskripsi, 100, '...') }}</p>
+                            <a href="{{ route('kampanye.show', $kampanye->slug) }}" class="btn btn-primary">Lebih
+                                Lanjut</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
+    </div>
     </div>
 
     <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -93,7 +100,7 @@
     <footer>
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
-            © 2021 Copyright: Web Donasi GIS
+            © 2021 Copyright: Babakan Peutey Fondantion
             {{-- <a class="text-reset fw-bold" href="#"></a> --}}
         </div>
         <!-- Copyright -->

@@ -50,6 +50,7 @@ Route::group(['as' => 'frontend.', 'middleware' => ['auth']], function () {
     //donasi
     Route::post('donasi', 'DonasiController@store')->name('donasi.store');
     Route::get('donasi/{donasi}', 'DonasiController@detail')->name('donasi.detail');
+    Route::get('/midtrans/callback', 'DonasiController@getTransactionData');
     Route::get('transaksi', 'DonasiController@show')->name('donasi.show');
     Route::get('donasi-saya', 'DonasiController@index')->name('donasi.index');
 

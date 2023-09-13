@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'site_title' => 'Gis',
+    'site_title' => 'Babakan Peutey Fondantion',
 
 ];

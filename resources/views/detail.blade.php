@@ -31,7 +31,7 @@
             max-height: 100%;
         }
     </style>
-    <title>Web Donasi GIS</title>
+    <title>Babakan Peutey Fondantion</title>
 </head>
 
 <body>
@@ -118,7 +118,7 @@
     <footer>
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
-            © 2021 Copyright: Web Donasi GIS
+            © 2021 Copyright: Babakan Peutey Fondantion
             {{-- <a class="text-reset fw-bold" href="#"></a> --}}
         </div>
         <!-- Copyright -->

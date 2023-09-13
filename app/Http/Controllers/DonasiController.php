@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Donasi;
 use App\Models\Kampanye;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config as FacadesConfig;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Midtrans\Config;
 use Midtrans\Snap;
@@ -36,6 +39,49 @@ class DonasiController extends Controller
         return view('detail', compact('donasi', 'kampanye'));
     }
 
+    public function getTransactionData(Request $request)
+    {
+        // Ambil order ID dari parameter query string
+        $order_id = $request->input('order_id');
+
+        // Konfigurasi Guzzle HTTP Client
+        $client = new Client();
+        $apiUrl = 'https://api.midtrans.com/v2/transactions/' . $order_id;
+
+        // Buat permintaan GET ke API Midtrans
+        $response = $client->get($apiUrl, [
+            'headers' => [
+                'Authorization' => 'Basic ' . base64_encode(config('services.midtrans.serverKey') . ':'),
+            ],
+        ]);
+        
+        try {
+            $response = $client->get($apiUrl, [
+                'headers' => [
+                    'Authorization' => 'Basic ' . base64_encode(config('services.midtrans.serverKey') . ':'),
+                ],
+            ]);
+
+            if ($response->getStatusCode() === 200) {
+                $transaction = json_decode($response->getBody(), true);
+
+                // Lakukan sesuatu dengan data transaksi yang diperoleh
+                return view('order', compact('transaction'));
+            } else {
+                // Tangani kesalahan jika permintaan ke Midtrans gagal
+                $errorMessage = 'Permintaan ke Midtrans gagal dengan kode status: ' . $response->getStatusCode();
+                Log::error($errorMessage);
+                return view('order', ['error' => $errorMessage]);
+            }
+        } catch (\Exception $e) {
+            // Tangani kesalahan jika terjadi kesalahan dalam permintaan
+            $errorMessage = 'Permintaan ke Midtrans gagal: ' . $e->getMessage();
+            Log::error($errorMessage);
+            return view('order', ['error' => $errorMessage]);
+        }
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -48,11 +94,11 @@ class DonasiController extends Controller
         $attr['user_id'] = auth()->id();
         $order = uniqid();
         $attr['order_id'] = $order;
-        
+
         $kampanye = Kampanye::find($request->kampanye_id);
-        
+
         $donasi = Donasi::create($attr);
-        
+
         // Set konfigurasi Midtrans
         Config::$serverKey = config('services.midtrans.serverKey');
         Config::$isProduction = config('services.midtrans.isProduction');
